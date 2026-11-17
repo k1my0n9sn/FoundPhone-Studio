@@ -1,3 +1,4 @@
+import "./family-wallpaper.css";
 import { StatusGlyph } from "./ios/StatusGlyph";
 import { SocialDetail, socialDetailApps } from "./skins/SocialDetails";
 import { NativeCalculator } from "./ios/Calculator";
