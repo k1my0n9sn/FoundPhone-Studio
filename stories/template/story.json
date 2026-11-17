@@ -3,7 +3,7 @@
   "id": "ui-test-phone-v2",
   "title": "捡手机",
   "description": "仅用于界面测试，不含剧情",
-  "revision": 6,
+  "revision": 7,
   "phone": {
     "owner": "机主",
     "date": "2026-10-25",
@@ -292,27 +292,6 @@
           "id": "test-message-messenger",
           "body": "这是一条测试消息。",
           "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-kakao",
-      "app": "kakao",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-kakao",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        },
-        {
-          "id": "test-reply-kakao",
-          "body": "这是一条测试回复。",
-          "senderId": "owner"
         }
       ]
     },
@@ -778,6 +757,16 @@
         "id": "test-appstore",
         "title": "测试内容",
         "body": "这是一条测试内容。"
+      }
+    ],
+    "kakao": [
+      {
+        "id": "kakao-friend-mamamoohw",
+        "title": "MAMAMOO 丁辉人",
+        "body": "点击进入对话",
+        "time": "2026-10-25 09:41",
+        "sender": "机主",
+        "meta": {}
       }
     ]
   },
