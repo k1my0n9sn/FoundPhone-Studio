@@ -3,7 +3,7 @@
   "id": "ui-test-phone-v2",
   "title": "捡手机",
   "description": "仅用于界面测试，不含剧情",
-  "revision": 4,
+  "revision": 5,
   "phone": {
     "owner": "机主",
     "date": "2026-10-25",
@@ -94,6 +94,76 @@
       "name": "测试联系人",
       "phone": "",
       "bio": "这是一条测试内容。"
+    },
+    {
+      "id": "mamamoo-hwasa",
+      "name": "MAMAMOO 丁辉人",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "hyejin",
+      "name": "惠真",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "yongsun",
+      "name": "容仙欧尼",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "moon-seulgi",
+      "name": "文涩琪",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "seulgi",
+      "name": "涩琪",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "mijoo",
+      "name": "美珠",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "hyojung",
+      "name": "效定",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "youngji",
+      "name": "英智",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "mom",
+      "name": "妈妈",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
+    },
+    {
+      "id": "cheek-bunny",
+      "name": "😚🐰",
+      "phone": "",
+      "avatar": "",
+      "bio": ""
     }
   ],
   "chats": [
