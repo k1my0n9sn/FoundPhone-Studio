@@ -1,0 +1,10 @@
+.wallpaper-family-photo {
+  background-color: #34533b;
+  background-image: url("../assets/family-lockscreen.webp");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.wallpaper-family-photo .wallpaper-orb {
+  display: none;
+}
