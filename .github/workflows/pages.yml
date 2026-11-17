@@ -20,6 +20,30 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Restore full-resolution lock-screen wallpaper
+        run: |
+          cat \
+            family-photo-part-00.txt \
+            family-photo-part-01.txt \
+            tmp-wallpaper-part-02.txt \
+            tmp-wallpaper-part-03.txt \
+            tmp-wallpaper-part-04.txt \
+            tmp-wallpaper-part-05.txt \
+            tmp-wallpaper-part-06a.txt \
+            tmp-wallpaper-part-06b.txt \
+            tmp-wallpaper-part-07a.txt \
+            tmp-wallpaper-part-07b.txt \
+            tmp-wallpaper-part-08b.txt \
+            tmp-wallpaper-part-08c.txt \
+            tmp-wallpaper-part-09a.txt \
+            tmp-wallpaper-part-09b.txt \
+            tmp-wallpaper-part-10a.txt \
+            tmp-wallpaper-part-10b.txt \
+            tmp-wallpaper-part-11a.txt \
+            tmp-wallpaper-part-11b.txt \
+            | tr -d '\\n' | base64 --decode > assets/family-lockscreen.webp
+          test "$(wc -c < assets/family-lockscreen.webp | tr -d ' ')" -eq 70608
+          file assets/family-lockscreen.webp
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
