@@ -22,6 +22,7 @@ jobs:
       - run: npm ci
       - name: Restore full-resolution lock-screen wallpaper
         run: |
+          set -euxo pipefail
           cat \
             family-photo-part-00.txt \
             family-photo-part-01.txt \
@@ -41,7 +42,9 @@ jobs:
             tmp-wallpaper-part-10b.txt \
             tmp-wallpaper-part-11a.txt \
             tmp-wallpaper-part-11b.txt \
-            | tr -d '\\n' | base64 --decode > assets/family-lockscreen.webp
+            > /tmp/family-photo.b64
+          test "$(wc -c < /tmp/family-photo.b64 | tr -d ' ')" -eq 94144
+          base64 --decode /tmp/family-photo.b64 > assets/family-lockscreen.webp
           test "$(wc -c < assets/family-lockscreen.webp | tr -d ' ')" -eq 70608
           file assets/family-lockscreen.webp | tee /tmp/wallpaper-info.txt
           grep -q '627x1115' /tmp/wallpaper-info.txt
