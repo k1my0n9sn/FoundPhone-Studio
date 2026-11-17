@@ -43,7 +43,8 @@ jobs:
             tmp-wallpaper-part-11b.txt \
             | tr -d '\\n' | base64 --decode > assets/family-lockscreen.webp
           test "$(wc -c < assets/family-lockscreen.webp | tr -d ' ')" -eq 70608
-          file assets/family-lockscreen.webp
+          file assets/family-lockscreen.webp | tee /tmp/wallpaper-info.txt
+          grep -q '627x1115' /tmp/wallpaper-info.txt
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
