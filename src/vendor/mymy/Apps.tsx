@@ -67,7 +67,13 @@ export function MymyKakao(p: SkinProps) {
     [draft, setDraft] = useState(""),
     [query, setQuery] = useState(""),
     [menu, setMenu] = useState(false);
-  const list = grouped(p.items),
+  const groups = grouped(p.items),
+    list =
+      tab === "聊天"
+        ? groups.filter(
+            (g) => g.items.at(-1)?.meta.hideFromChatList !== "true",
+          )
+        : groups,
     messages = [
       ...p.items.filter((i) => i.title === p.thread),
       ...sent.flatMap((raw, index) => {
@@ -199,7 +205,9 @@ export function MymyKakao(p: SkinProps) {
             <div className="mymy-local-menu">
               <strong>{p.thread}</strong>
               <p>
-                群成员：{[...new Set(messages.map((m) => m.sender))].join("、")}
+                群成员：
+                {messages[0]?.meta.groupMembers ||
+                  [...new Set(messages.map((m) => m.sender))].join("、")}
               </p>
               <button onClick={() => setMenu(false)}>完成</button>
             </div>
