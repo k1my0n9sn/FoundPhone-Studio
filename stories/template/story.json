@@ -3,7 +3,7 @@
   "id": "ui-test-phone-v2",
   "title": "捡手机",
   "description": "仅用于界面测试，不含剧情",
-  "revision": 5,
+  "revision": 6,
   "phone": {
     "owner": "机主",
     "date": "2026-10-25",
@@ -313,6 +313,23 @@
           "id": "test-reply-kakao",
           "body": "这是一条测试回复。",
           "senderId": "owner"
+        }
+      ]
+    },
+    {
+      "id": "kakao-friend-mom",
+      "app": "kakao",
+      "title": "妈妈",
+      "participants": [
+        "owner",
+        "mom"
+      ],
+      "messages": [
+        {
+          "id": "kakao-msg-mom",
+          "body": "你好呀！",
+          "senderId": "owner",
+          "time": "2026-10-25 09:41"
         }
       ]
     }
