@@ -746,90 +746,90 @@
       {
         "id": "kakao-row-mamamoohw",
         "title": "MAMAMOO 丁辉人",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "MAMAMOO 丁辉人",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-hyejin",
         "title": "惠真",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "惠真",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-yongsun",
         "title": "容仙欧尼",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "容仙欧尼",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-moonseulgi",
         "title": "文涩琪",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "文涩琪",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-seulgi",
         "title": "涩琪",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "涩琪",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-mijoo",
         "title": "美珠",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "美珠",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-hyojung",
         "title": "效定",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "效定",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-youngji",
         "title": "英智",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "英智",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-mom",
         "title": "妈妈",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "妈妈",
         "outgoing": true,
         "meta": {}
       },
       {
         "id": "kakao-row-cheekbunny",
         "title": "😚🐰",
-        "body": "已添加好友，欢迎来聊天。",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "😚🐰",
         "outgoing": true,
         "meta": {
           "hideFromChatList": "true"
@@ -838,9 +838,9 @@
       {
         "id": "kakao-row-group-9294",
         "title": "9294（5）",
-        "body": "群聊已建立，大家都在吗？",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "9294（5）",
         "outgoing": true,
         "meta": {
           "groupMembers": "机主、涩琪、美珠、效定、英智"
@@ -849,9 +849,9 @@
       {
         "id": "kakao-row-group-rbw",
         "title": "RBW去（4）",
-        "body": "群聊已建立，大家都在吗？",
+        "body": "",
         "time": "2026-10-25 09:41",
-        "sender": "机主",
+        "sender": "RBW去（4）",
         "outgoing": true,
         "meta": {
           "groupMembers": "机主、MAMAMOO 丁辉人、惠真、😚🐰"

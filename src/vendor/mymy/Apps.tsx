@@ -102,6 +102,7 @@ export function MymyKakao(p: SkinProps) {
         }
       }),
     ],
+    visibleMessages = messages.filter((m) => (m.body || "").trim() || m.media),
     scroll = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const node = scroll.current;
@@ -121,8 +122,8 @@ export function MymyKakao(p: SkinProps) {
             </span>
           </header>
           <div className="msgs kk" ref={scroll}>
-            {messages.map((m, i) => {
-              const run = messageRun(messages, i);
+            {visibleMessages.map((m, i) => {
+              const run = messageRun(visibleMessages, i);
               return (
                 <div
                   key={m.id}
@@ -159,7 +160,7 @@ export function MymyKakao(p: SkinProps) {
                 </div>
               );
             })}
-            {!messages.length && <Blank />}
+            {!visibleMessages.length && <Blank />}
           </div>
           <form
             className="kzinp"
