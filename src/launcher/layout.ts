@@ -63,9 +63,17 @@ const isCustomizedPhoneTemplate = (work: Work) =>
   work.id === "ui-test-phone-v2";
 export function defaultLayout(input: Work): DeviceLayout {
   const w = ensureAppStore(input);
-  const apps = isCustomizedPhoneTemplate(w)
-    ? w.apps.filter((a) => !removedTemplateApps.has(a.id))
-    : w.apps;
+  const apps = structuredClone(w.apps).map((app) =>
+    isCustomizedPhoneTemplate(w) && removedTemplateApps.has(app.id)
+      ? {
+          ...app,
+          installed: false,
+          visible: false,
+          dock: false,
+          folder: "",
+        }
+      : app,
+  );
   return {
     version: 1,
     workId: w.id,
@@ -131,7 +139,13 @@ export function validateLayout(raw: unknown, input: Work) {
     layout.previewLayoutRevision = 1;
   }
   if (isCustomizedPhoneTemplate(w) && layout.previewLayoutRevision < 2) {
-    layout.apps = layout.apps.filter((a) => !removedTemplateApps.has(a.id));
+    for (const app of layout.apps) {
+      if (!removedTemplateApps.has(app.id)) continue;
+      app.installed = false;
+      app.visible = false;
+      app.dock = false;
+      app.folder = "";
+    }
     layout.order = layout.order.filter((id) => !removedTemplateApps.has(id));
     for (const id of removedTemplateApps) delete layout.positions[id];
     layout.previewLayoutRevision = 2;

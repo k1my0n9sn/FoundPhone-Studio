@@ -125,14 +125,17 @@ it("removes selected apps from the customized phone template and migrates saved 
   const removed = ["qq", "wechat", "alipay", "taobao", "netease"];
   const fresh = defaultLayout(w);
   expect(fresh.previewLayoutRevision).toBe(2);
-  expect(fresh.apps.some((a) => removed.includes(a.id))).toBe(false);
+  expect(
+    fresh.apps
+      .filter((a) => removed.includes(a.id))
+      .every((a) => !a.installed && !a.visible && !a.dock),
+  ).toBe(true);
 
   const old = structuredClone(fresh);
   old.previewLayoutRevision = 1;
   for (const id of removed) {
     const app = w.apps.find((a) => a.id === id)!;
-    old.apps.push({
-      ...app,
+    Object.assign(old.apps.find((a) => a.id === id)!, {
       installed: true,
       visible: true,
       dock: false,
@@ -143,9 +146,13 @@ it("removes selected apps from the customized phone template and migrates saved 
   }
   const migrated = validateLayout(old, w);
   expect(migrated.previewLayoutRevision).toBe(2);
-  expect(migrated.apps.some((a) => removed.includes(a.id))).toBe(false);
+  expect(
+    migrated.apps
+      .filter((a) => removed.includes(a.id))
+      .every((a) => !a.installed && !a.visible && !a.dock),
+  ).toBe(true);
   expect(migrated.order.some((id) => removed.includes(id))).toBe(false);
   expect(removed.some((id) => id in migrated.positions)).toBe(false);
-  expect(migrated.apps.find((a) => a.id === "kakao")?.installed).toBe(false);
+  expect(migrated.apps.find((a) => a.id === "kakao")?.installed).toBe(true);
   expect(migrated.apps.find((a) => a.id === "camera")?.installed).toBe(true);
 });
