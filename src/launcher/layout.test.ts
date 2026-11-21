@@ -117,3 +117,18 @@ it("migrates preview folders once while preserving custom folders and widgets", 
     validateLayout(migrated, w).apps.find((a) => a.id === "wechat")!.folder,
   ).toBe("作者新建文件夹");
 });
+
+it("preserves authored app order when creating the initial desktop layout", () => {
+  const w = work();
+  const storeIndex = w.apps.findIndex((app) => app.id === "appstore");
+  const [store] = w.apps.splice(storeIndex, 1);
+  w.apps.splice(4, 0, store);
+  const expectedApps = w.apps.map((app) => app.id);
+  const expectedHome = w.apps
+    .filter((app) => !app.dock)
+    .map((app) => app.id);
+  const layout = defaultLayout(w);
+  expect(layout.apps.map((app) => app.id)).toEqual(expectedApps);
+  expect(layout.order).toEqual(expectedHome);
+  expect(layout.order[4]).toBe("appstore");
+});

@@ -58,15 +58,13 @@ export function defaultLayout(input: Work): DeviceLayout {
     version: 1,
     workId: w.id,
     previewLayoutRevision: w.id === "ui-test-phone-v2" ? 1 : 0,
-    apps: structuredClone(w.apps)
-      .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
-      .map((a) =>
-        a.id === "appstore"
-          ? { ...a, installed: true, visible: true, folder: "", dock: false }
-          : a,
-      ),
+    apps: structuredClone(w.apps).map((a) =>
+      a.id === "appstore"
+        ? { ...a, installed: true, visible: true, folder: "", dock: false }
+        : a,
+    ),
     widgets: [],
-    order: [],
+    order: w.apps.filter((a) => !a.dock).map((a) => a.id),
     cleared: [],
     positions: {},
   };
