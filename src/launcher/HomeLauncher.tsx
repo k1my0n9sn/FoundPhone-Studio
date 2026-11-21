@@ -153,18 +153,8 @@ export function HomeLauncher(p: Props) {
       started: number;
       active: boolean;
     } | null>(null);
-  const removedTemplateApps = new Set([
-    "qq",
-    "wechat",
-    "alipay",
-    "taobao",
-    "netease",
-  ]);
   const pages = packHome(homeEntries(p.layout), p.layout.positions),
-    apps = p.layout.apps.filter(
-      (a) =>
-        p.work.id !== "ui-test-phone-v2" || !removedTemplateApps.has(a.id),
-    ),
+    apps = p.layout.apps,
     active = apps.find((a) => a.id === selected);
   if (editing && pages.length < 20) pages.push([]);
   const beginSwipe = (e: PointerEvent<HTMLDivElement>) => {
