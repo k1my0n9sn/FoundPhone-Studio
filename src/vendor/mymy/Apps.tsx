@@ -62,11 +62,31 @@ function Back({ onClick }: { onClick: () => void }) {
   );
 }
 export function MymyKakao(p: SkinProps) {
+  // One-time cleanup of the user's specifically requested local test message.
+  // Kakao sent messages are stored in ui.kakao.mymyKktSent, not story.json.
   const [tab, setTab] = useSkinState<string>(p, "mymyTab", "聊天"),
     [sent, setSent] = useSkinState<string[]>(p, "mymyKktSent", []),
     [draft, setDraft] = useState(""),
     [query, setQuery] = useState(""),
     [menu, setMenu] = useState(false);
+  useEffect(() => {
+    if (p.thread !== "MAMAMOO 丁辉人") return;
+    const index = sent.findIndex((raw) => {
+      try {
+        const entry: unknown = JSON.parse(raw);
+        return (
+          Array.isArray(entry) &&
+          entry.length === 3 &&
+          entry.every((value) => typeof value === "string") &&
+          entry[0] === "MAMAMOO 丁辉人" &&
+          entry[1] === "111"
+        );
+      } catch {
+        return false;
+      }
+    });
+    if (index >= 0) setSent(sent.filter((_, i) => i !== index));
+  }, [p.thread, sent, setSent]);
   const groups = grouped(p.items),
     list =
       tab === "聊天"
