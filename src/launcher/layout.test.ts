@@ -117,3 +117,35 @@ it("migrates preview folders once while preserving custom folders and widgets", 
     validateLayout(migrated, w).apps.find((a) => a.id === "wechat")!.folder,
   ).toBe("作者新建文件夹");
 });
+
+
+it("removes selected apps from the customized phone template and migrates saved layouts", async () => {
+  const template = await import("../../stories/template/story.json");
+  const w = compileStory(template.default).work;
+  const removed = ["qq", "wechat", "alipay", "taobao", "netease"];
+  const fresh = defaultLayout(w);
+  expect(fresh.previewLayoutRevision).toBe(2);
+  expect(fresh.apps.some((a) => removed.includes(a.id))).toBe(false);
+
+  const old = structuredClone(fresh);
+  old.previewLayoutRevision = 1;
+  for (const id of removed) {
+    const app = w.apps.find((a) => a.id === id)!;
+    old.apps.push({
+      ...app,
+      installed: true,
+      visible: true,
+      dock: false,
+      folder: "",
+    });
+    old.order.push(id);
+    old.positions[id] = { page: 0, x: 0, y: 0 };
+  }
+  const migrated = validateLayout(old, w);
+  expect(migrated.previewLayoutRevision).toBe(2);
+  expect(migrated.apps.some((a) => removed.includes(a.id))).toBe(false);
+  expect(migrated.order.some((id) => removed.includes(id))).toBe(false);
+  expect(removed.some((id) => id in migrated.positions)).toBe(false);
+  expect(migrated.apps.find((a) => a.id === "kakao")?.installed).toBe(false);
+  expect(migrated.apps.find((a) => a.id === "camera")?.installed).toBe(true);
+});
