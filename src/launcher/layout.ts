@@ -52,13 +52,25 @@ export function ensureAppStore(work: Work): Work {
         ],
       };
 }
+const removedTemplateApps = new Set([
+  "qq",
+  "wechat",
+  "alipay",
+  "taobao",
+  "netease",
+]);
+const isCustomizedPhoneTemplate = (work: Work) =>
+  work.id === "ui-test-phone-v2";
 export function defaultLayout(input: Work): DeviceLayout {
   const w = ensureAppStore(input);
+  const apps = isCustomizedPhoneTemplate(w)
+    ? w.apps.filter((a) => !removedTemplateApps.has(a.id))
+    : w.apps;
   return {
     version: 1,
     workId: w.id,
-    previewLayoutRevision: w.id === "ui-test-phone-v2" ? 1 : 0,
-    apps: structuredClone(w.apps)
+    previewLayoutRevision: isCustomizedPhoneTemplate(w) ? 2 : 0,
+    apps: structuredClone(apps)
       .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
       .map((a) =>
         a.id === "appstore"
@@ -117,6 +129,12 @@ export function validateLayout(raw: unknown, input: Work) {
       ...layout.order.filter((id) => !visibleApps.includes(id)),
     ];
     layout.previewLayoutRevision = 1;
+  }
+  if (isCustomizedPhoneTemplate(w) && layout.previewLayoutRevision < 2) {
+    layout.apps = layout.apps.filter((a) => !removedTemplateApps.has(a.id));
+    layout.order = layout.order.filter((id) => !removedTemplateApps.has(id));
+    for (const id of removedTemplateApps) delete layout.positions[id];
+    layout.previewLayoutRevision = 2;
   }
   const entries = homeEntries(layout),
     packed = packHome(entries, layout.positions);
