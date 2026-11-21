@@ -280,7 +280,7 @@ export function MymyKakao(p: SkinProps) {
                     <Avatar name={last.sender || g.title} src={last.avatar} />
                     <span className="kzkn">
                       <b>{g.title}</b>
-                      <small>{tab === "好友" ? last.sender : last.body}</small>
+                      {tab === "聊天" && <small>{last.body}</small>}
                     </span>
                     <span className="kzkmt">
                       {last.time.slice(-5)}
