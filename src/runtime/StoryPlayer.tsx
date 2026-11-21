@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { registerSW } from "virtual:pwa-register";
+
+registerSW({ immediate: true });
 import { createRoot } from "react-dom/client";
 import { Phone } from "../Phone";
 import { validateWork, type Work } from "../schema";
