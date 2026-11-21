@@ -130,5 +130,5 @@ it("preserves authored app order when creating the initial desktop layout", () =
   const layout = defaultLayout(w);
   expect(layout.apps.map((app) => app.id)).toEqual(expectedApps);
   expect(layout.order).toEqual(expectedHome);
-  expect(layout.order[4]).toBe("appstore");
+  expect(layout.order).toContain("appstore");
 });
