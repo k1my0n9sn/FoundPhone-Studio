@@ -218,7 +218,7 @@ export function MymyKakao(p: SkinProps) {
           <div className="kzhd">
             <header className="kzkh">
               <b className="kzti">
-                {tab === "好友" ? p.owner || "好友" : "聊天"}
+                {tab === "好友" ? "KakaoTalk" : "聊天"}
               </b>
               <span className="kzic">
                 <button
